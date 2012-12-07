@@ -1,7 +1,7 @@
 # jQuery.creaseFont
-jQuery.creaseFont is a Plugin for jQuery to resize the Font on the whole Page or only in some Elemements.
+ist ein Plugin für jQuery um die Schriftgröße auf der gesamten Homepage oder nur Teile davon zu vergrößern oder zu verkleinern. Ich hab aus meinem jQuery Workaround nun ein Plugin geschrieben. Das ist flexibler. 
 
-Start using creaseFont with default settings looks like this: 
+Die Einbindung mit den default settings sieht folgendermaßen aus. Weitere Beispiele mit Einstellungen folgen weiter unten. HTML Head bereich: 
 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 	<script type="text/javascript" src="jquery.creaseFont.min.js"></script>
@@ -11,17 +11,17 @@ Start using creaseFont with default settings looks like this:
 	});
 	</script>
 
-The Buttons somewhere in the HTML body: 
+Nun Beispielsweise noch die Buttons folgendermaßen einfügen: 
 
 	<span id="fontLarge" style="cursor:pointer">( + )</span>
 	<span id="fontDefault" style="cursor:pointer">( &#216; )</span>
 	<span id="fontSmall" style="cursor:pointer">( - )</span>
 
-You can use every HTML Element with a proper ID.
+Als Button kann jedes Element mit der passenden ID genutzt werden. 
 
-**Options** 
+**Optionen** 
 
-You can use parameters in the following way, shown are the default settings: 
+Folgende Parameter können dem Aufruf übergeben werden. Die hier gezeigten, sind auch die Standardparameter: 
 
 	$.creaseFont({
               content     :  'body',
@@ -41,17 +41,17 @@ You can use parameters in the following way, shown are the default settings:
               });
 	});
 
-**Explanation:**
+**Erläuterung:**
 
 <table>
 <thead style="font-weight: bold;">
 <tr>
 <td>
-Param
+Parameter
 </td>
       
       <td>
-        Value
+        Wert
       </td>
     </tr>
   </thead>
@@ -63,11 +63,7 @@ Param
       </td>
       
       <td>
-         	Can be one or more proper HTML Element.
-			‘body’ is the whole HTML Document.
-			‘#id’ proper ID of a Container.
-			['#id1','id2'] ID’s of more than one Container in a Array.
-			You can use any Selector like ['div.class > ul > li > a']
+        Kann ein oder mehere beliebige Elemente enthalten. 'body' bezeichnet das gesamte Dokument und ist default. '#id' die id eines bestimmten Containers ['#id1','id2'] die ID's mehrerer Container in einem Array.
       </td>
     </tr>
     
@@ -77,7 +73,7 @@ Param
       </td>
       
       <td>
-        Default font size.<br />Default is 100%
+        Standardschriftgröße. Default ist 100%
       </td>
     </tr>
     
@@ -87,7 +83,7 @@ Param
       </td>
       
       <td>
-        Maximum font size.<br />Default is 160%
+        Maximale Schriftgröße. Default ist 160%
       </td>
     </tr>
     
@@ -97,7 +93,7 @@ Param
       </td>
       
       <td>
-        Minimum font size.<br />Default ist 60%
+        Minimale Schriftgröße. Default ist 60%
       </td>
     </tr>
     
@@ -107,7 +103,7 @@ Param
       </td>
       
       <td>
-        In this step the font size increases or decreases.<br />Defaut is 10%
+        Um diesen Wert wird die Schrift vergrößert oder verkleinert. Defaut ist 10%
       </td>
     </tr>
     
@@ -117,7 +113,7 @@ Param
       </td>
       
       <td>
-        The unit of the font size.<br />Default is %.<br />Possible is %, em, px, pt (look at the examples)
+        Die Einheit der Schrift. Default ist % Möglich ist %, em, px, pt (beachte die Beispiele)
       </td>
     </tr>
     
@@ -127,8 +123,7 @@ Param
       </td>
       
       <td>
-        Unique ID of the button to increase.<br />
-		Default is #fontLarge
+        Eindeutige ID des Buttons für die Vergrößerung. Default ist #fontLarge
       </td>
     </tr>
     
@@ -138,8 +133,7 @@ Param
       </td>
       
       <td>
-        Unique ID of the button for default size.<br />
-		Default is #fontDefault
+        Eindeutige ID des Buttons für die Standardgröße. Default ist #fontDefault
       </td>
     </tr>
     
@@ -149,8 +143,7 @@ Param
       </td>
       
       <td>
-        Unique ID of the button to decrease.<br />
-		Default is #fontSmall
+        Eindeutige ID des Buttons für die Verkleinerung. Default ist #fontSmall
       </td>
     </tr>
     
@@ -160,8 +153,7 @@ Param
       </td>
       
       <td>
-        Using Animation?<br />
-		Default is true
+        Animation einschalten? Default ist true
       </td>
     </tr>
     
@@ -171,8 +163,7 @@ Param
       </td>
       
       <td>
-        Animation Speed<br />
-		Default is 500
+        Geschwindigkeit für die Animation Default ist 500
       </td>
     </tr>
     
@@ -182,8 +173,7 @@ Param
       </td>
       
       <td>
-        Name of the Cookie.<br />
-		Default is creaseFont
+        Name des Cookies, in dem die Werte gespeichert werden. Default ist creaseFont
       </td>
     </tr>
     
@@ -193,8 +183,7 @@ Param
       </td>
       
       <td>
-        Path for the Cookie.<br />
-		Default is / for the whole Domain.
+        Pfad in dem das Cookie gültig ist. Default ist / für die gesamte Domain.
       </td>
     </tr>
     
@@ -204,21 +193,20 @@ Param
       </td>
       
       <td>
-        Lifetime of the Cookie in days.<br />
-		Default is 60
+        Dauer der gültigkeit des Cookies in Tagen. Default ist 60
       </td>
     </tr>
   </tbody>
 </table> 
 
-You can use a callback function at least Parameter, which will be called after the font size is increased, decreased or set to default. 
+Als letzten Parameter könnt ihr eine Callback Funktion aufrufen, welche ausgeführt wird, nachdem die Schrift vergrößert, verkleinert oder zurückgesetzt wurde. 
 
 	$.creaseFont({
                after:function( obj ) {
                  $('#callback').html("Zoomlevel: " + obj.currSize + obj.currUnit + "&lt;br /&gt;Current Task: " + obj.currTask + "&lt;br /&gt;" + obj.currLvl);
                  }
                });
-The object contains the following values. 
+Das Object beinhaltet folgende Werte. 
 
 <table>
   <thead style="font-weight: bold;">
@@ -228,7 +216,7 @@ The object contains the following values.
       </td>
       
       <td>
-        Value
+        Wert
       </td>
     </tr>
   </thead>
@@ -239,7 +227,7 @@ The object contains the following values.
       </td>
       
       <td>
-        The current font size.<br />int or float
+        Die aktuelle Schriftgröße. int oder float
       </td>
     </tr>
     
@@ -249,7 +237,7 @@ The object contains the following values.
       </td>
       
       <td>
-        The current unit (%,em,pt,px)<br />string
+        Die genutze Einheit (%,em,pt,px) string
       </td>
     </tr>
     
@@ -259,7 +247,7 @@ The object contains the following values.
       </td>
       
       <td>
-        The HTML Element that has been altered as given in content.<br />string
+        Das HTML Element welches verändert wurde, wie bei content übergeben. string
       </td>
     </tr>
     
@@ -269,7 +257,7 @@ The object contains the following values.
       </td>
       
       <td>
-         	The current task that has been called. (increaseFont|defaultFont|decreaseFont)<br />string
+        Die aktuelle Aufgabe welche ausgeführt wurde. (increaseFont|defaultFont|decreaseFont) string
       </td>
     </tr>
     
@@ -279,24 +267,21 @@ The object contains the following values.
       </td>
       
       <td>
-         	The current zoolevel that has been arrived or an empty String<br />
-			max – Maximum zoomlevel arrived<br />
-			default – Default zoomlevel has been clicked<br />
-			min – The minimum zoomlevel has been arrived
+        Das aktuelle Zoomlevel welches erreicht wurde oder ein leerer String max - Maximale Zoolevel wurde erreicht default - Default Zoomlevel wurde geklickt min - Das minimale Zoomlevel wurde erreicht
       </td>
     </tr>
   </tbody>
 </table>   
 
-**Examples** 
+**Beispiele** 
 
-Some examples can be found here: [jquery.creaseFont.js Plugin Example 1.][1] 
+Ein paar Beispiele mit Erläuterungen findet ihr hier: [jquery.creaseFont.js Plugin Example 1.][1] 
 
 **Changelog** 
 
-	1.0.3 - The callback function will now be called, after the animation is done
-	1.0.2 - animate, animateSpeed added
-	1.0.1 - First public release
+	1.0.3 - Die Callback Funktion wird nun erst ausgeführt, nachdem eine evtl. Animation beendet ist.
+	1.0.2 - animate, animateSpeed hinzugefügt.
+	1.0.1 - Erstes Public release
 
 
  [1]: http://blog.mxtracks.de/projects/jQuery.creaseFont/example1.htm "jquery.creaseFont.js Plugin Example 1"
