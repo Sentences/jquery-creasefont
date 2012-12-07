@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-GB">
+<head>
+	<title>jquery.creaseFont.js Plugin Example 6.</title>
+	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+	<meta name="description" content="creaseFont jQuery Javascript Example 6 for Font sizing." />
+	<meta name="keywords" content="jQuery,creaseFont,increase,decrease,font,fonts,sizing,accessible,accessibility" />
+	<meta name="robots" content="index, follow" />
+	<link rel="stylesheet" type="text/css" href="screen.css" media="screen" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="javascripts/jquery.creaseFont.min.js"></script>
+	<script type="text/javascript">
+	jQuery(document).ready(function(){
+	  $.creaseFont();
+	});
+	</script>
+	<style type="text/css" media="screen">
+	body {
+		font-size: 12px;
+	}
+	.col1 {
+		font-size: 1em;
+		}
+	.col2 {
+		font-size: 14px;
+		}
+	.col3 {
+		font-size: 1pt;
+		}
+	</style>
+</head>
+<body>
+
+<div id="header">
+	<h1><a href="example1.htm">Example 1</a> <a href="example2.htm">Example 2</a> <a href="example3.htm">Example 3</a> <a href="example4.htm">Example 4</a> <a href="example5.htm">Example 5</a> <a href="example6.htm">Example 6</a> <a href="example7.htm">Example 7</a></h1>
+	<p><a href="#footer">jQuery.creaseFont with default settings.</a><br />Body font-size is 12px, other sizes are mixed, see what happend.</p>
+	<span id="fontLarge" style="cursor:pointer">( + )</span>
+	<span id="fontDefault" style="cursor:pointer">( &#216; )</span>
+	<span id="fontSmall" style="cursor:pointer">( - )</span>
+</div>
+<div class="colmask threecol">
+	<div class="colmid">
+		<div class="colleft">
+			<div class="col1">
+				<!-- Column 1 start -->
+				<h1>Column 1 h1 tag</h1>
+				<h3>Column 1 h3 tag</h3>
+				<p><b>&lt;b&gt;-tag. Default size here is 1em</b></p>
+				<p>&lt;p&gt;-tag. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.</p>
+				<p><small>&lt;small&gt;-tag. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu.</small></p>
+				<blockquote><p>&lt;blockquote&gt;-tag. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede. Sed lectus. Donec mollis hendrerit risus. Phasellus nec sem in justo pellentesque facilisis. Etiam imperdiet imperdiet orci. Nunc nec neque. Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi. Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo. Maecenas malesuada. Praesent congue erat at massa. Sed cursus turpis vitae tortor. Donec posuere vulputate arcu. Phasellus accumsan cursus velit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed aliquam, nisi quis porttitor congue, elit erat euismod orci, ac placerat dolor lectus quis orci. Phasellus consectetuer vestibulum elit. Aenean tellus metus, bibendum sed, posuere ac, mattis non, nunc. Vestibulum fringilla pede sit amet augue. In turpis. Pellentesque posuere. Praesent turpis. Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus. Donec elit libero, sodales nec, volutpat a, suscipit non, turpis. Nullam sagittis. Suspendisse pulvinar, augue ac venenatis condimentum, sem libero volutpat nibh, nec pellentesque velit pede quis nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce id purus. Ut varius tincidunt libero. Phasellus dolor. Maecenas vestibulum mollis</p></blockquote>
+				<!-- Column 1 end -->
+			</div>
+			<div class="col2">
+				<!-- Column 2 start -->
+				<h1>Column 2 h1 tag</h1>
+				<h3>Column 2 h3 tag</h3>
+				<p><b>&lt;b&gt;-tag. Default size here is 14px</b></p>
+				<p>&lt;p&gt;-tag. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.</p>
+				<!-- Column 2 end -->
+			</div>
+			<div class="col3">
+				<!-- Column 3 start -->
+				<h1>Column 3 h1 tag</h1>
+				<h3>Column 3 h3 tag</h3>
+				<p><b>&lt;b&gt;-tag. Default size here is 1pt</b></p>
+				<p>&lt;p&gt;-tag. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.</p>
+				<!-- Column 3 end -->
+			</div>
+		</div>
+	</div>
+</div>
+<div id="footer">
+	<h3>CSS:</h3>
+<pre>
+body {
+  font-size: 12px;
+  }
+.col1 {
+  font-size: 1em;
+  }
+.col2 {
+  font-size: 14px;
+  }
+.col3 {
+  font-size: 1pt;
+  }
+</pre>
+	<h3>JS:</h3>
+<pre>
+jQuery(document).ready(function(){
+  $.creaseFont();
+});
+</pre>
+	<h3>Button Code:</h3>
+<pre>
+&lt;span id=&quot;fontLarge&quot; style=&quot;cursor:pointer&quot;&gt;( + )&lt;/span&gt;
+&lt;span id=&quot;fontDefault&quot; style=&quot;cursor:pointer&quot;&gt;( &amp;#216; )&lt;/span&gt;
+&lt;span id=&quot;fontSmall&quot; style=&quot;cursor:pointer&quot;&gt;( - )&lt;/span&gt;
+</pre>
+	<p style="border-top:1px solid black">jQuery.creaseFont.js example by <a href="http://blog.mxtracks.de/2011/09/jquery-creasefont-plugin/">blog.mxtracks.de</a></p>
+</div>
+
+</body>
+</html>
