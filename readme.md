@@ -1,5 +1,5 @@
 # jQuery.creaseFont
-jQuery.creaseFont is a Plugin for jQuery to resize the Font on the whole Page or only in some Elemements.
+jQuery.creaseFont is a Plugin for jQuery to resize the Font on the whole Page or only in some Elements.
 
 **Documentation** 
 
