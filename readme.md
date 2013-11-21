@@ -7,6 +7,7 @@ Documentation can be found at the github page: [sentences.github.com/jquery-crea
 
 **Changelog** 
 
+	1.0.4 - Fixed problem with cookies and arrays-selectors
 	1.0.3 - The callback function will now be called, after the animation is done
 	1.0.2 - animate, animateSpeed added
 	1.0.1 - First public release

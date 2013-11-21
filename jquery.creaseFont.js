@@ -1,6 +1,6 @@
 /**
 * jQuery creaseFont plugin
-* Version 1.0.3
+* Version 1.0.4
 * Increase or Decrase the Fontsize of a whole Website or only some containers
 * Remember: 100% = 1em = 16px
 * Remember2: my english could be better
@@ -46,7 +46,7 @@
             opt = $.extend(true, settings, options),
             currentSize = opt.defaultSize,
             currLvl = '',
-            version = '1.0.3',
+            version = '1.0.4',
             newsize;
         
         $(opt.bFontLarge).click(function () {
@@ -67,7 +67,10 @@
         if (mycookie(opt.cookieName)) {
             newsize = mycookie(opt.cookieName);
             currentSize = parseInt(newsize, 10);
-            $(opt.content).css('font-size', currentSize + opt.unit);
+            var animateState = opt.animate;
+            opt.animate = false;
+            sizeIT(opt.content, currentSize);
+            opt.animate = animateState;
         }
     
         function increaseFont() {
