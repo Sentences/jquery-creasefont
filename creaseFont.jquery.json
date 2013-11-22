@@ -1,0 +1,29 @@
+{
+  "name": "creaseFont",
+  "title": "jQuery.creaseFont",
+  "description": "jQuery plugin to resize the Font on the whole Page or only in some Elements.",
+  "keywords": [
+    "font",
+    "resize",
+    "usability",
+    "accessibility"
+  ],
+  "version": "1.0.4",
+  "author": {
+    "name": "Sentences / Nico R",
+    "url": "https://github.com/Sentences/"
+  },
+  "licenses": [
+  {
+  "type": "CC BY-SA 3.0",
+  "url": "http://creativecommons.org/licenses/by-sa/3.0/"
+  }
+  ],
+  "bugs": "https://github.com/Sentences/jquery-creasefont/issues",
+  "homepage": "http://sentences.github.io/jquery-creasefont/",
+  "docs": "http://sentences.github.io/jquery-creasefont/",
+  "download": "https://github.com/Sentences/jquery-creasefont",
+  "dependencies": {
+    "jquery": ">=1.4"
+  }
+}
