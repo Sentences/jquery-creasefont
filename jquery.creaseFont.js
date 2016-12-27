@@ -4,7 +4,7 @@
 * Increase or Decrase the Fontsize of a whole Website or only some containers
 * Remember: 100% = 1em = 16px
 * Remember2: my english could be better
-* 
+*
 * You can call a function after the font is in or decreased:
 * after:function( obj ) { }
 * the obj contains the following:
@@ -16,7 +16,7 @@
 *                         max = maximun zoomlvl arrived
 *                         default = default zoom lvl
 *                         min = minimum zoom lvl arrived
-* 
+*
 * Copyright (c) 2011 Nico Renken (blog.mxtracks.de)
 * Licensed under Creativ Commons Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0):
 * http://creativecommons.org/licenses/by-sa/3.0/
@@ -28,52 +28,69 @@
 
         var settings = {
                 content               :           'body', // container of the content which should be in/decrased, body is all / string
-                defaultSize           :           100, // Stock Fontsize in % / integer or float 
-                maxSize               :           160, // Maximum Fontsize in % / integer or float 
-                minSize               :           60, // Minimum Fontsize in % / integer or float 
-                stepSize              :           10, // steps / integer or float 
+                defaultSize           :           100, // Stock Fontsize in % / integer or float
+                maxSize               :           160, // Maximum Fontsize in % / integer or float
+                minSize               :           60, // Minimum Fontsize in % / integer or float
+                stepSize              :           10, // steps / integer or float
                 unit                  :           '%', // stock unit is % / string
                 bFontLarge            :           '#fontLarge', // ID from the increase button / string
                 bFontDefault          :           '#fontDefault', // ID from stock button / string
                 bFontSmall            :           '#fontSmall', // ID from decrease button / string
+                bFontReset            :           '#fontReset', // ID from decrease button / string
                 animate               :           true, // Use Animation? / bool
                 animateSpeed          :           500, // Animation Speed (milisec)/ int
                 cookieName            :           'creaseFont', // Name of the Cookie / string
                 cookiePath            :           '/', // Path of the Cookie, / is the whole domain / string
-                cookieLifetime        :           60 // Cookie lifetime in days integer
-            
+                cookieLifetime        :           60, // Cookie lifetime in days integer
+
+                // events
+                ondecrease            :           $.noop,
+                onincrease            :           $.noop,
+                onreset               :           $.noop,
+                ondefault             :           $.noop,
             },
             opt = $.extend(true, settings, options),
             currentSize = opt.defaultSize,
             currLvl = '',
             version = '1.0.4',
             newsize;
-        
+
         $(opt.bFontLarge).click(function () {
             increaseFont();
             return false;
         });
-    
+
         $(opt.bFontDefault).click(function () {
             defaultFont();
             return false;
         });
-    
+
         $(opt.bFontSmall).click(function () {
             decreaseFont();
             return false;
         });
-    
+
+        $(opt.bFontReset).click(function () {
+            resetFont();
+            return false;
+        });
+
         if (mycookie(opt.cookieName)) {
             newsize = mycookie(opt.cookieName);
-            currentSize = parseInt(newsize, 10);
-            var animateState = opt.animate;
-            opt.animate = false;
-            sizeIT(opt.content, currentSize);
-            opt.animate = animateState;
+            newsize = parseInt(newsize, 10);
+            if (newsize !== 0) {
+                currentSize = newsize < opt.minSize ? opt.minSize : newsize;
+                var animateState = opt.animate;
+                opt.animate = false;
+                sizeIT(opt.content, currentSize);
+                opt.animate = animateState;
+            }
         }
-    
+
         function increaseFont() {
+            if (currentSize === 0 ) {
+                currentSize = opt.defaultSize;
+            }
             currentSize = currentSize + opt.stepSize;
             if (currentSize >= opt.maxSize) {
                 currentSize = opt.maxSize;
@@ -102,8 +119,9 @@
                     opt.after(objects);
                 }
             }
+            trigger('increase');
         }
-    
+
         function defaultFont() {
             currentSize = opt.defaultSize;
             currLvl = 'default';
@@ -128,9 +146,40 @@
                     opt.after(objects);
                 }
             }
+            trigger('default');
         }
-    
+
+        function resetFont() {
+            currentSize = 0;
+            currLvl = 'original';
+            sizeIT(opt.content, currentSize);
+            mycookie(opt.cookieName, currentSize, {
+                path: opt.cookiePath,
+                expires: -100
+            });
+            var objects = {
+                currSize : currentSize,
+                currUnit : opt.unit,
+                currContent : opt.content,
+                currTask : 'resetFont',
+                currLvl : currLvl
+            };
+            if ($.isFunction(opt.after)) {
+                if (opt.animate) {
+                    setTimeout(function(){
+                          opt.after(objects);
+                    },opt.animateSpeed + 100);
+                }else {
+                    opt.after(objects);
+                }
+            }
+            trigger('reset');
+        }
+
         function decreaseFont() {
+            if (currentSize === 0 ) {
+                currentSize = opt.defaultSize;
+            }
             currentSize = currentSize - opt.stepSize;
             if (currentSize <= opt.minSize) {
                 currentSize = opt.minSize;
@@ -159,53 +208,57 @@
                     opt.after(objects);
                 }
             }
+            trigger('decrease');
         }
-    
+
         function sizeIT(cn, sz) {
             if (typeof (cn) === 'object' && (cn instanceof Array)) {
                 $.each(cn, function (index, value) {
-                    if (opt.animate) {
-                        $(value).animate({
-                            'font-size' : sz  + opt.unit
-                        }, opt.animateSpeed);
-                    } else {
-                        $(value).css('font-size', sz + opt.unit);
-                    }
+                    // animate sets font-size: 0px if size is empty
+                    setFontSize(value, sz);
                 });
             } else {
-                if (opt.animate) {
-                    $(cn).animate({
-                        'font-size' : sz  + opt.unit
-                    }, opt.animateSpeed);
-                } else {
-                    $(cn).css('font-size', sz + opt.unit);
-                }
+                setFontSize(cn, sz);
             }
         }
-    
+
+        function setFontSize(selector, size) {
+//            $(selector).css('line-height', '100%');
+            if (opt.animate && size !== 0) {
+                $(selector).animate({
+                    'font-size' : size  + opt.unit
+                }, opt.animateSpeed);
+            } else {
+                $(selector).css('font-size', size === 0 ? '' : size  + opt.unit);
+            }
+        }
+
         //unused for now...
         function getPercentSize(where) {
             return parseInt($(where).css('font-size').substr(0, $(where).css('font-size').length - 2) * 6.25, 10);
         }
-        /* Cookie  
+        /* Cookie
         * used code from jQuery Cookie plugin by Klaus Hartl (stilbuero.de)
         */
         function mycookie(key, value, cookieOptions) {
+            if (key.trim().length === 0) {
+                return null;
+            }
           // key and at least value given, set cookie...
             if (arguments.length > 1 && String(value) !== "[object Object]") {
                 var cOptions = $.extend({}, cookieOptions);
-    
+
                 if (value === null || value === undefined) {
                     cOptions.expires = -1000;
                 }
-    
+
                 if (typeof cOptions.expires === 'number') {
                     var days = cOptions.expires, t = cOptions.expires = new Date();
                     t.setDate(t.getDate() + days);
                 }
-    
+
                 value = String(value);
-    
+
                 return (document.cookie = [
                     encodeURIComponent(key), '=',
                     cOptions.raw ? value : encodeURIComponent(value),
@@ -222,6 +275,13 @@
             } : decodeURIComponent;
             return (result = new RegExp('(?:^|; )' + encodeURIComponent(key) + '=([^;]*)').exec(document.cookie)) ? decode(result[1]) : null;
         };
-    // Cookie    
+    // Cookie
+
+        function trigger(name){
+            var eventName = 'on' + name;
+            if (opt[eventName] !== undefined && $.isFunction(opt[eventName])) {
+                opt[eventName]();
+            }
+        }
     };
 })(jQuery);
